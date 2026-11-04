@@ -16,6 +16,7 @@ jobs:
       run: 
         sudo apt-get update
         sudo apt-get binutils bzip2 diff find flex gawk gcc-6+ getopt grep install libc-dev libz-dev make4.1+ perl python3.8+ rsync subversion unzip which
+        sudo timedatectl set-timezone Asia/Shanghai
 
     - name: pull openwrt
       run: 
@@ -27,8 +28,21 @@ jobs:
         git clone --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
         echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
-    - name: make
-      run: make distcheck
+    - name: refresh feeds
+      run: 
+        cd openwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
-    - name: Run distcheck
-      run: make distcheck
+    - name: make
+      run: 
+        cd openwrt
+        make defconfig
+        make download -j$(nproc)
+        make -j$(nproc) || make -j1 V=s
+
+    - name: Upload firmware to release
+      uses: softprops/action-gh-release@master
+      with:
+        tag_name: build-${{ github.run_number }}
+        files: openwrt/bin/targets/**/*
