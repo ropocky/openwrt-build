@@ -20,7 +20,7 @@ jobs:
 
     - name: pull openwrt
       run: |
-        git clone --depth=1 -b master https://github.com/openwrt/openwrt openwrt
+        git clone --branch v25.12.6 --single-branch --depth=1 https://github.com/openwrt/openwrt.git openwrt openwrt
 
     - name: pull openclash
       run: |
