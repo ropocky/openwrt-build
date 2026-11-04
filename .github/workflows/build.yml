@@ -13,29 +13,29 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: env
-      run: 
+      run: |
         sudo apt-get update
         sudo apt-get -y install binutils bzip2 diff find flex gawk gcc-6+ getopt grep install libc-dev libz-dev make4.1+ perl python3.8+ rsync subversion unzip which
         sudo timedatectl set-timezone Asia/Shanghai
 
     - name: pull openwrt
-      run: 
+      run: |
         git clone --depth=1 -b master https://github.com/openwrt/openwrt openwrt
 
     - name: pull openclash
-      run: 
+      run: |
         cd openwrt
         git clone --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
         echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
     - name: refresh feeds
-      run: 
+      run: |
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
     - name: make
-      run: 
+      run: |
         cd openwrt
         make defconfig
         make download -j$(nproc)
