@@ -25,7 +25,7 @@ jobs:
     - name: pull openclash
       run: |
         cd openwrt
-        git clone --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
+        git clone --branch v0.48.002 --single-branch --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
         echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
     - name: refresh feeds
