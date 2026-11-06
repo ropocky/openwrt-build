@@ -55,7 +55,7 @@ jobs:
         make download -j$(nproc)
         make -j$(nproc) || make -j1 V=s
 
-    - name: 生成日期 tag
+    - name: date tag
       id: tag
       run: echo "date=$(TZ=Asia/Shanghai date +'%Y.%m.%d')" >> "$GITHUB_OUTPUT"
 
