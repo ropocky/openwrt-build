@@ -30,6 +30,15 @@ jobs:
         CONFIG_TARGET_x86=y
         CONFIG_TARGET_x86_64=y
         CONFIG_TARGET_x86_64_DEVICE_generic=y
+        CONFIG_PACKAGE_openssh-keygen=y
+        CONFIG_PACKAGE_openssh-server=y
+        CONFIG_PACKAGE_frr=y
+        CONFIG_FRR_INTERNAL=y
+        CONFIG_FRR_NO_SNMP=y
+        CONFIG_PACKAGE_frr-bfdd=y
+        CONFIG_PACKAGE_frr-bgpd=y
+        CONFIG_PACKAGE_frr-watchfrr=y
+        CONFIG_PACKAGE_frr-zebra=y
         CONFIG_PACKAGE_luci-app-openclash=y
         EOF
     
