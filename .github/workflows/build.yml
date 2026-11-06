@@ -46,8 +46,12 @@ jobs:
         make download -j$(nproc)
         make -j$(nproc) || make -j1 V=s
 
+    - name: 生成日期 tag
+      id: tag
+      run: echo "date=$(TZ=Asia/Shanghai date +'%Y.%m.%d')" >> "$GITHUB_OUTPUT"
+
     - name: Upload firmware to release
       uses: softprops/action-gh-release@master
       with:
-        tag_name: build-${{ github.run_number }}
+        tag_name: build-${{ steps.tag.outputs.date }}
         files: openwrt/bin/targets/x86/64/*
