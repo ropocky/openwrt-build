@@ -22,6 +22,12 @@ jobs:
       run: |
         git clone --branch v25.12.6 --single-branch --depth=1 https://github.com/openwrt/openwrt.git openwrt
 
+    - name: refresh feeds
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
     - name: pull openclash
       run: |
         cd openwrt
@@ -42,12 +48,6 @@ jobs:
         CONFIG_PACKAGE_luci-app-openclash=y
         EOF
     
-    - name: refresh feeds
-      run: |
-        cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-
     - name: make
       run: |
         cd openwrt
