@@ -38,6 +38,7 @@ jobs:
         CONFIG_TARGET_x86_64=y
         CONFIG_TARGET_x86_64_DEVICE_generic=y
         CONFIG_PACKAGE_luci-app-openclash=y
+        CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
         CONFIG_PACKAGE_apk-mbedtls=y
         CONFIG_PACKAGE_attendedsysupgrade-common=y
         CONFIG_PACKAGE_base-files=y
@@ -250,10 +251,6 @@ jobs:
         CONFIG_PACKAGE_luci-app-PACKAGE_manager=y
         CONFIG_PACKAGE_luci-base=y
         CONFIG_PACKAGE_luci-compat=y
-        CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-zh-cn=y
-        CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
-        CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
-        CONFIG_PACKAGE_luci-i18n-PACKAGE_manager-zh-cn=y
         CONFIG_PACKAGE_luci-lib-base=y
         CONFIG_PACKAGE_luci-lib-ip=y
         CONFIG_PACKAGE_luci-lib-jsonc=y
